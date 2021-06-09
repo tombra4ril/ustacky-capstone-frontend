@@ -74,6 +74,10 @@ const e_store_form = (() => {
     }
   }
 
+  const validateTotal = () => {
+    error = e_store_cart.total() <= 0? true: false
+  }
+
   // event operation when submitting the form
   submit.addEventListener("click", (event) => {
     event.preventDefault()
@@ -81,6 +85,7 @@ const e_store_form = (() => {
     validateName()
     validateEmail()
     validatePhone()
+    validateTotal()
     if(name.value == "" || email.value == "" || phone.value == ""){
       input_span[0].innerHTML = "Please fill details"
     }else if(!error){
@@ -90,6 +95,7 @@ const e_store_form = (() => {
       payWithPaystack(event)
     }else{
       console.log("There is error")
+      input_span[0].innerHTML = "Did you add items to cart? Unknown error!"
     }
   })
 
