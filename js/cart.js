@@ -270,10 +270,17 @@ const e_store_cart = (() => {
 
   // creates table to list the gadgets shopped for
   function prepareTable(){
-    let body = document.createElement("tbody")
-    body.id = "cart-bills-table"
-    table.appendChild(body)
-    return body
+    //check if the table body already exists
+    let table_body_id = "cart-bills-table"
+    let table_body = table.querySelector(`#${table_body_id}`)
+    if(table_body){
+      return table_body 
+    }else{
+      let body = document.createElement("tbody")
+      body.id = table_body_id
+      table.appendChild(body)
+      return body
+    }
   }
 
   // Remove items from the shopping cart
