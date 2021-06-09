@@ -13,6 +13,21 @@ const e_store_form = (() => {
   
   // event operation when leaving the name input field
   name.addEventListener("blur", () => {
+    validateName()
+  })
+  
+  // event operation when leaving the email input field
+  email.addEventListener("blur", () => {
+    validateEmail()
+  })
+  
+  // event operation when leaving the phone number input field
+  phone.addEventListener("blur", () => {
+    validatePhone()
+  })
+
+  // validate name field
+  const validateName = () => {
     if(name.value == ""){
       input_span[1].innerHTML = "Please enter your name"
       error = true
@@ -20,10 +35,10 @@ const e_store_form = (() => {
       input_span[1].innerHTML = ""
       error = false
     }
-  })
-  
-  // event operation when leaving the email input field
-  email.addEventListener("blur", () => {
+  }
+
+  // validate email field
+  const validateEmail = () => {
     if(email.value == ""){
       input_span[2].innerHTML = "Please enter an email"
       error = true
@@ -31,10 +46,10 @@ const e_store_form = (() => {
       input_span[2].innerHTML = ""
       error = false
     }
-  })
-  
-  // event operation when leaving the phone number input field
-  phone.addEventListener("blur", () => {
+  }
+
+  // validate phone field
+  const validatePhone = () => {
     let value = phone.value
     if(value == ""){
       input_span[3].innerHTML = "Please enter your telephone number"
@@ -57,12 +72,15 @@ const e_store_form = (() => {
         error = false
       }
     }
-  })
+  }
 
   // event operation when submitting the form
   submit.addEventListener("click", (event) => {
     event.preventDefault()
     // check if the required input fields are empty
+    validateName()
+    validateEmail()
+    validatePhone()
     if(name.value == "" || email.value == "" || phone.value == ""){
       input_span[0].innerHTML = "Please fill details"
     }else if(!error){
