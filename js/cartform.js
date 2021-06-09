@@ -173,26 +173,24 @@ const e_store_form = (() => {
     tbody.appendChild(heading_row)
 
     // Add the items to the table
-    e_store_cart.items.forEach((obj, index) => {
+    e_store_cart.items.forEach((item, index) => {
       // Contains row details and create row
-      let item = e_store_cart.gadgets.filter((gadget) => gadget.id == obj.id)[0]
-      let row_details = [index, item.name, obj.number]
       let row = document.createElement("tr")
       row.classList.add("summary-tr")
 
       // Serial number
       let s_n = document.createElement("td")
-      let sn_text = document.createTextNode(`${row_details[0] + 1}`)
+      let sn_text = document.createTextNode(`${index + 1}`)
       s_n.appendChild(sn_text)
 
       // Name of gadget
       let name = document.createElement("td")
-      let name_text = document.createTextNode(`${row_details[1]}`)
+      let name_text = document.createTextNode(`${item.name}`)
       name.appendChild(name_text)
 
       // Quantity of gadget
       let qty = document.createElement("td")
-      let qty_text = document.createTextNode(`${row_details[2]}`)
+      let qty_text = document.createTextNode(`${item.qty}`)
       qty.appendChild(qty_text)
       
       // Append everything to the table body
